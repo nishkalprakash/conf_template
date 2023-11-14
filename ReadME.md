@@ -8,8 +8,7 @@ It provides a basic structure for authors to format their papers according to th
 
 Author: Prof. Debasis Samanta
 
-### Outline of Paper
-
+## Outline of Paper
 - [**Title**](#title)
 
 - [**Abstract**](#abstract)
@@ -30,12 +29,10 @@ Author: Prof. Debasis Samanta
 
 ---
 
-### [Title](/sec/0-title.tex)
----
+## [Title](/sec/0-title_author.tex)
 (10-12 words preferably)
 
-### [Abstract](/sec/1-abstract.tex)
----
+## [Abstract](/sec/1-abstract.tex)
 (200-250 words)
 - Context (1-2 sentences)
 - Major Research Gap (1-2 sentences)
@@ -43,8 +40,7 @@ Author: Prof. Debasis Samanta
 - Contribution/Achievement of the work (2-3 sentences)
 - **Keywords**: 3-6 Keywords
 
-### [Introduction](/sec/2-intro.tex)
----
+## [Introduction](/sec/2-intro.tex)
 (1-2 pages)
 
 - **Paragraph 1 (Context)**: Area of research, current trends/ issues/ limitations, challenges to overcome etc
@@ -63,19 +59,16 @@ Author: Prof. Debasis Samanta
 
 - **Paragraph 6 (Organization of the paper)**: Organization of the paper, chapter wise statement
 
-### [Literature Survey](/sec/3-related.tex)
----
+## [Literature Survey](/sec/3-related.tex)
 (1-2 pages)
 - A brief description of the related work
 - Summary Table: The existing works at a glance
 
-### [Background](/sec/3-related.tex)
----
+## [Background](/sec/3-related.tex)
 (1-2 pages)
 - A brief description of the background/preliminaries of the work. Briefly to the point and precisely.
 
-### [Proposed Methodology](/sec/4-method.tex)
----
+## [Proposed Methodology](/sec/4-method.tex)
 (4-6 pages)
 - What problems(s) have been addressed in this work?
 - Overview of the proposed approach (try to put graphical abstracts)
@@ -88,16 +81,14 @@ Author: Prof. Debasis Samanta
   - Why have you proposed this solution?
 
 
-### [Experiment/Experimental Results/Dataset](/sec/5-results.tex)
----
+## [Experiment/Experimental Results/Dataset](/sec/5-results.tex)
 (2-4 pages)
 - Detail design of experiment/setup/protocols/subjects/data collection/ or a detailed description of the used datasets
 - Objectives of the experiment/what do you want to prove/substantiate?
 - Experimental Environment, with a link to code/data repository
 - Result vis-a-vis experimental objectives with proper tables, graphs, plots, etc
 
-### [Conclusions](/sec/6-conclusion.tex)
----
+## [Conclusions](/sec/6-conclusion.tex)
 (<1 page)
 - Novelty in this work
 - Mentionable achievement/breakthrough
@@ -105,13 +96,11 @@ Author: Prof. Debasis Samanta
 - Claims if under some assumptions
 - Future scope or further work
 
-### [References](/sec/ref.bib)
----
+## [References](/sec/ref.bib)
 - Follow a bibliography style
 - All recent/relevant papers only
 - 20-40 references
 
-### [Research Highlights](/sec/6-conclusion.tex)
----
+## [Research Highlights](/sec/6-conclusion.tex)
 (optional)
 - Give 4-5 salient points of your research work, each in 10 words.
