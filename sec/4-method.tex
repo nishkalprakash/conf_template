@@ -1,0 +1,241 @@
+% 4-6 page proposed method
+\section{Proposed method}
+\label{sec:method}
+
+
+\{What problems(s) have been addressed in this work?\}
+
+\{Overview of the proposed approach (try to put graphical abstracts)\}
+
+\{Sub-section-wise detail description of the substeps involved.\}
+
+% \{Take care of the following:\}
+\{What is the problem and what is its input\}
+
+\{How have you solved the problem?\}
+
+\{Why have you proposed this solution?\}
+
+
+	% \begin{comment}
+	% \setlength{\belowdisplayskip}{5pt} \setlength{\belowdisplayshortskip}{2pt}
+	% \setlength{\abovedisplayskip}{2pt} \setlength{\abovedisplayshortskip}{0pt}
+	% The proposed method (shown in figure \ref{fig:overview}) involves dividing the fingerprint image into blocks of equal size. These blocks are used as the basis for feature extraction, which is the process of identifying and isolating essential characteristics of the image. Once the features have been extracted, they are grouped into three clusters. These clusters represent different parts of the fingerprint image that share similar characteristics, and one of them is mapped to the fingerprint image to form the ROI.
+	% \begin{figure}[H]
+	% 	\centering
+	% 	\includegraphics[width=\textwidth]{images/overview.png}
+	% 	\caption{The overview of the proposed method}
+	% 	\label{fig:overview}
+	% \end{figure}
+
+	% The method involves five key steps: block segmentation of the fingerprint image, feature extraction from each block,  feature clustering based on the distance matrix, identification of a target cluster and mapping the target cluster to a region in the fingerprint image, which is considered as the ROI.
+
+	% \subsection{Block Segmentation}
+
+	% The block segmentation involves dividing an input fingerprint image $I$ of size $m \times n$ into non-overlapping blocks of size $p \times p$, where $p$ is the size of the blocks.
+	% \begin{equation} \label{eqn:block}
+	% 	B_{i,j} = I_{(i-1)\times p+1:i\times p, (j-1)\times p+1:j\times p}
+	% \end{equation}
+	% As shown in the equation \ref{eqn:block}, the $i, j$th block is denoted by $B_{i,j}$, and is obtained by extracting the pixels in rows $(i-1)\times p+1$ to $i \times p$ and columns $(j-1)\times p+1$ to $j \times p$ from the original image $I$. The resulting block matrix $B$ is of size $(m/p) \times (n/p)$.
+
+	% \subsection{Feature Extraction} \label{feature}
+
+	% For each block $B_{i,j}$ of size $p \times p$, the five features $F_{i,j}^1$, $F_{i,j}^2$, $F_{i,j}^3$, $F_{i,j}^4$, and $F_{i,j}^5$ are calculated, which represent the gradient, ridge orientation, curvature, Hessian and ridge frequency features, respectively.
+
+	% Then, the mean of these five features is taken to form a 5-dimensional feature vector for the block $B_{i,j}$, which is denoted as $V(B_{i,j})$ and is defined as:
+	% $$V(B_{i,j}) = [\text{mean}(F_{i,j}^1), \text{mean}(F_{i,j}^2), \text{mean}(F_{i,j}^3), \text{mean}(F_{i,j}^4), \text{mean}(F_{i,j}^5)]$$
+	% % \begin{equation}
+	% % V = [V(B_{i,j})]_{i=1,\ldots,m/p,,j=1,\ldots,n/p}
+	% % \end{equation}
+	% % where each V(Bi,j) is a 5-dimensional feature vector representing the i, jth block.
+
+	% In other words, the 5-dimensional feature vector $V(B_{i,j})$ is formed by taking the mean of the five features calculated for the block $B_{i,j}$. The feature vector is generated for each block in the fingerprint image to obtain a set of feature vectors representing the entire fingerprint.
+
+	% The gradient features $F_{i,j}^1$ of the blocks are obtained using the Sobel operator, as shown below:
+	% \begin{equation}
+	% 	\openup\jot
+	% 	\begin{aligned}[t]
+	% 		F_{i,j}^1 & = \sqrt{G_x^2 + G_y^2}
+	% 	\end{aligned}
+	% 	\begin{aligned}[t]
+	% 		\text{, where\quad}
+	% 		G_x & = B_{i,j} * K_x
+	% 		\text{,}
+	% 	\end{aligned}
+	% 	\begin{aligned}[t]
+	% 		G_y & = B_{i,j} * K_y
+	% 	\end{aligned}
+	% \end{equation}
+
+
+
+
+	% % \begin{equation} \label{grad}
+	% %     \begin{matrix}
+	% %         G_x = B_{i,j} * K_x, G_y = B_{i,j} * K_y, F_{i,j}^1 = \sqrt{G_x^2 + G_y^2}  \\[0.5cm]
+	% %     \end{matrix}
+	% % \end{equation}
+
+	% Here, $K_x$ and $K_y$ are Sobel operator kernels for the X and Y direction.
+
+	% The ridge orientation feature $F_{i,j}^2$ captures the direction of the fingerprint ridges at each pixel in the block $B_{i,j}$. A gradient-based approach is used to extract the direction of the ridges in the blocks using the equations,
+
+	% \begin{equation} \label{orient}
+	% 	\begin{matrix}
+	% 		F_{i,j}^2 = \displaystyle\frac{\pi}{2} + \displaystyle\frac{\arctan(2G_{xy}/(G_{xx} - G_{yy}))}{2} \\[0.1cm]
+	% 		\text{where,\quad $G_{xx} = \sum_{B} {G_x^2}$,  $G_{yy} = \sum_B {G_y^2}$ and $G_{xy} = \sum_B {G_xG_y}$}
+	% 	\end{matrix}
+	% \end{equation}
+
+	% The local curvature $F_{i,j}^3$ of the ridges and the ridge frequency $F_{i,j}^5$ are calculated using the Hessian matrix $F_{i,j}^4$ and second-order gradients, as shown in the equation below. The Hessian matrix is also considered a separate feature.
+	% \begin{equation}
+	% 	\openup\jot % make lines a little more far apart
+	% 	\begin{aligned}[t]
+	% 		F_{i,j}^3 & = \displaystyle\frac{F_{i,j}^4}{(1+G_x^2+G_y^2)^2}
+	% 	\end{aligned}
+	% 	\qquad % adjust to suit
+	% 	\begin{aligned}[t]
+	% 		F_{i,j}^5 & = \displaystyle\frac{1}{2\pi}\sqrt{\frac{\lambda_1 \lambda_2}{\lambda_1 + \lambda_2}}
+	% 	\end{aligned}
+	% \end{equation}
+	% where, $\lambda_1$ and $\lambda_2$ are the eigenvalues of the Hessian matrix and $F_{i,j}^4 = (G_{xx} \cdot G_{yy}) - (G_{xy} \cdot G_{yx})$.
+	% % \begin{equation} \label{curv}
+	% %     \begin{matrix}
+	% %         F_{i,j}^3 = \displaystyle\frac{F_{i,j}^4}{(1+G_x^2+G_y^2)^2}\\[0.5cm] F_{i,j}^5 = \displaystyle\frac{1}{2\pi}\sqrt{\frac{\lambda_1 \lambda_2}{\lambda_1 + \lambda_2}}\\[0.5cm]
+	% %         \text{where, $\lambda_1$ and $\lambda_2$ are the eigenvalues of the Hessian matrix and } \\ F_{i,j}^4 = (G_{xx} \cdot G_{yy}) - (G_{xy} \cdot G_{yx})
+
+	% %     \end{matrix}    
+	% % \end{equation}
+	% \subsection{Agglomerative clustering}
+	% After extracting the feature vectors for each block, a distance matrix is calculated based on the Euclidean distance. The Euclidean distance between two feature vectors $V_i$ and $V_j$  is defined as $d_{ij}$ and the distance matrix as $D$.
+	% % \begin{equation}
+	% % 	\openup\jot % 
+	% % 	\begin{aligned}[t]
+	% % 		D = \begin{bmatrix}
+	% % 			    d_{1,1} & d_{1,2} & \cdots & d_{1,n} \\
+	% % 			    d_{2,1} & d_{2,2} & \cdots & d_{2,n} \\
+	% % 			    \vdots  & \vdots  & \ddots & \vdots  \\
+	% % 			    d_{n,1} & d_{n,2} & \cdots & d_{n,n}
+	% % 		    \end{bmatrix}
+	% % 	\end{aligned}
+	% % 	\qquad % adjust to suit
+	% % 	\begin{aligned}[t]
+	% % 		d_{ij} & = \sqrt{\sum_{k=1}^{5} (V_{i,k} - V_{j,k})^2}
+	% % 	\end{aligned}
+	% % \end{equation}
+
+	% % \begin{equation}
+	% % d_{ij} = \sqrt{\sum_{k=1}^{5} (V_{i,k} - V_{j,k})^2}
+	% % \end{equation}
+	% % In mathematical notation, the distance matrix $D$ can be represented as:
+	% % \begin{equation}
+	% % D = \begin{bmatrix}
+	% % d_{1,1} & d_{1,2} & \cdots & d_{1,n} \\
+	% % d_{2,1} & d_{2,2} & \cdots & d_{2,n} \\
+	% % \vdots & \vdots & \ddots & \vdots \\
+	% % d_{n,1} & d_{n,2} & \cdots & d_{n,n}
+	% % \end{bmatrix}
+	% % \end{equation}
+
+	% By using this distance matrix D, agglomerative clustering is used to form the clusters. Agglomerative clustering is a hierarchical clustering technique that starts with each vector $V$ as a separate cluster and iteratively merges the most similar cluster until the desired number of clusters is obtained, which, in this case, is three. These three clusters are assumed to be the background, ROI, and other parts of the fingerprint image. Here, the distance between clusters is defined as the minimum distance between any two feature vectors belonging to different clusters. Then, the two closest clusters are merged, and the distance matrix is updated accordingly. This process is repeated until the desired number of clusters is obtained.
+
+	% \subsection{Identification of Target cluster}
+	% % Once the agglomerative clustering algorithm generates three clusters, they can be further refined by selecting a specific cluster to represent the ROI in the fingerprint image. To do this, the cosine similarity $CS$ can be calculated between the feature vectors within each cluster and the cluster with the highest average cosine similarity $ACS(C_i)$ can be selected. 
+	% Once the agglomerative clustering algorithm generates three clusters, a specific cluster is selected to represent the ROI in the fingerprint image. This selection is based on calculating the cosine similarity (CS) between the feature vectors within each cluster, with the cluster displaying the highest average cosine similarity (ACS(Ci)) being chosen. To account for background similarity, additional metrics like curvature and orientation are employed. Among the remaining two clusters, the one with more dissimilarities in the edge regions, where ridges may terminate or exhibit varying orientations, is disregarded. Instead, priority is given to the cluster that shows greater consistency and similarity in terms of ridge orientation and curvature. This meticulous approach ensures accurate identification of the desired ROI.The cosine similarity between two feature vectors $V_i$ and $V_j$ can be computed as follows:
+	% \begin{equation}
+	% 	\openup\jot % make lines a little more far apart
+	% 	\begin{aligned}[t]
+	% 		ACS(C_i) &= \frac{\sum_{i,j} CS(V_i, V_j)}{N(N-1)/2}
+	% 	\end{aligned}
+	% 	\qquad % adjust to suit
+	% 	\begin{aligned}[t]
+	% 			CS(V_i, V_j) &= \frac{V_i \cdot V_j}{\lVert V_i \rVert \cdot \lVert V_j \rVert}
+	% 	\end{aligned}
+	% \end{equation}
+	% % \begin{equation}
+	% % 	CS(V_i, V_j) = \frac{V_i \cdot V_j}{\lVert V_i \rVert \cdot \lVert V_j \rVert} = \frac{\sum_{k=1}^{5} V_{i,k} \cdot V_{j,k}}{\sqrt{\sum_{k=1}^{5} V_{i,k}^2} \cdot \sqrt{\sum_{k=1}^{5} V_{j,k}^2}}
+	% % \end{equation}
+	% % \begin{equation}
+	% % 	ACS(C_i) = \frac{\sum_{i,j} CS(V_i, V_j)}{N(N-1)/2}
+	% % \end{equation}
+	% Here, $V_i \cdot V_j$ denotes the dot product of the feature vectors, and $\lVert V_i \rVert$, $\lVert V_j \rVert$ represent their Euclidean norms, $C_i$ represents the $i$-th cluster, $N$ represents the number of feature vectors in the cluster, and the sum is taken over all unique pairs of feature vectors within the cluster. Finally, the cluster with the highest average cosine similarity is selected as the Target cluster.
+
+	% \subsection{Identification of ROI}
+	% After selecting the target cluster with the highest average cosine similarity, it can be mapped back to the original fingerprint image to identify the ROI by finding the corresponding block indices of features in the cluster. To calculate the block indices i,j the following formulae have been used.
+	% \begin{equation*}
+	% 	\openup\jot % make lines a little more far apart
+	% 	\begin{aligned}[t]
+	% 		i & = \left\lfloor \frac{(k-1)}{p} \right\rfloor + 1
+	% 	\end{aligned}
+	% 	\qquad % adjust to suit
+	% 	\begin{aligned}[t]
+	% 		j & = (k-1) \bmod p + 1
+	% 	\end{aligned}
+	% \end{equation*}
+	% % \begin{equation}
+	% % i = \left\lfloor \frac{(k-1)}{p} \right\rfloor + 1
+	% % \end{equation}
+
+	% % \begin{equation}
+	% % j = (k-1) \bmod p + 1
+	% % \end{equation}
+	% where $k$ is the index of the feature vector in an array of feature vectors.
+
+	% Then each block is mapped to the original image by calculating the top left ($r,c$) and bottom right ($r^{'},c^{'}$) indices of that block in the original image.
+	% \begin{equation*}
+	% 	\openup\jot
+	% 	\begin{aligned}[t]
+	% 		r & = (i-1) \times p + 1
+	% 		\text{,}
+	% 	\end{aligned}
+	% 	\quad
+	% 	\begin{aligned}[t]
+	% 		c & = (j-1) \times p + 1
+	% 		\text{,}
+	% 	\end{aligned}
+	% 	\quad
+	% 	\begin{aligned}[t]
+	% 		r^{'} & = i \times p
+	% 		\text{,}
+	% 	\end{aligned}
+	% 	\quad
+	% 	\begin{aligned}[t]
+	% 		c^{'} & = j \times p
+	% 	\end{aligned}
+	% \end{equation*}
+
+	% % \begin{equation*}
+	% % \openup\jot 
+	% % \begin{aligned}[t]
+	% % r' &= i \times p
+	% % \end{aligned}
+	% % \qquad % adjust to suit
+	% % \begin{aligned}[t]
+	% %  c' &= j \times p
+	% % \end{aligned}
+	% % \end{equation*}
+
+	% % Starting row index:
+	% % \begin{equation}
+	% % r = (i-1) \times p + 1
+	% % \end{equation}
+
+	% % Starting column index:
+	% % \begin{equation}
+	% % c = (j-1) \times p + 1
+	% % \end{equation}
+
+	% % Ending row index:
+	% % \begin{equation}
+	% % r' = i \times p
+	% % \end{equation}
+
+	% % Ending column index:
+	% % \begin{equation}
+	% % c' = j \times p
+	% % \end{equation}
+
+	% After mapping the block indices to the original fingerprint, the next step is to determine the coordinates of the bounding box that encloses the target cluster. This is done by comparing the indices of all the blocks that are selected for the cluster and finding the minimum and maximum values for the row and column indices. The top left corner of the bounding box is given by the minimum row and column indices, while the bottom right corner is given by the maximum row and column indices. Once these four indices are determined, a bounding box is drawn using them to indicate the ROI.
+	% \end{comment}
+
+
