@@ -21,36 +21,35 @@
 % \renewcommand\UrlFont{\color{blue}\rmfamily}
 
 
+\newcommand\cc[1]{} % usage: \cc{In line comment}
+\newcommand\ccut[1]{} % usage: \cccut{latex code that will be removed}
+\newcommand\cch[1]{} % usage: \cch{Heading Comment}
+\newcommand\cci[1]{} % usage: \cci{Comment Item}
+
 \includecomment{draft}
-% \excludecomment{draft}
-\newcommand\cc[1]{}
-\newcommand\cch[1]{}
-\newcommand\cci[1]{}
+\excludecomment{draft}
 \begin{draft}
-	\renewcommand\cc[1][$<$cite?$>$]{\textcolor{blue}{$<$#1$>$}}%
-\end{draft}
+    \renewcommand\cc[1]{\textcolor{blue}{#1}}
+    \renewcommand\cch[1]{
+        % \par\noindent
+        \par\noindent
+        % \break
+        \textcolor{blue}{#1}
+        \hfill\break
+        % \par
+    }
+    \renewcommand\cci[1]{
+        \par\noindent
+        % \hfill\break
+        \begin{itemize}[nosep]
+        \nointerlineskip
+        \item \textcolor{blue}{#1}
+        \end{itemize}
+    }
 
-\begin{draft}
-	\renewcommand\cch[1][]{
-		\par\noindent
-		\hfill\break
-		% \textcolor{blue}{$<$#1$>$}
-		\cc[#1]
-		\hfill\break
-	}
-\end{draft}
-
-\begin{draft}
-	\renewcommand\cci[1][]{
-		\par\noindent
-		% \hfill\break
-		% \begin{itemize}[nosep]
-		\begin{itemize}
-			\nointerlineskip
-			% \item \textcolor{blue}{#1}
-			\item \cc[#1]%
-		\end{itemize}
-	}
+    \renewcommand\ccut[1]{
+    \cc{\\\framebox[\textwidth]{$\downarrow$ START COMMENT $\downarrow$}}#1\cc{\\\framebox[\textwidth]{$\uparrow$ END COMMENT $\uparrow$}}
+    }
 \end{draft}
 
 % % -------------- All packages go above this line --------------
