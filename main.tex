@@ -27,7 +27,7 @@
 \newcommand\cci[1]{} % usage: \cci{Comment Item}
 
 \includecomment{draft}
-\excludecomment{draft}
+% \excludecomment{draft}
 \begin{draft}
     \renewcommand\cc[1]{\textcolor{blue}{#1}}
     \renewcommand\cch[1]{
@@ -49,11 +49,20 @@
 
     \renewcommand\ccut[1]{
     \cc{\\\framebox[\textwidth]{$\downarrow$ START COMMENT $\downarrow$}}#1\cc{\\\framebox[\textwidth]{$\uparrow$ END COMMENT $\uparrow$}}
-    }
-\end{draft}
+}
 
 % % -------------- All packages go above this line --------------
 \begin{document}
+
+% \setlength{\textfloatsep}{1\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
+% \setlength{\parskip}{2pt plus2pt}
+% \setlength{\abovedisplayskip}{0pt}
+% \setlength{\belowdisplayskip}{0pt}
+% \setlength{\floatsep}{1ex}
+% \setlength{\abovecaptionskip}{1ex}
+% \setlength{\belowcaptionskip}{1ex}
+% \setlength{\intextsep}{1ex}
+
 % ----------------- Title -----------------
 \input{sec/0-title_author}
 
@@ -81,11 +90,12 @@
 % % BibTeX users should specify bibliography style 'splncs04'.
 % % References will then be sorted and formatted in the correct style.
 
+\cci{Follow a bibliography style}
+\cci{All recent/relevant papers only}
+\cci{20-40 references}
+
 \bibliographystyle{lib/splncs04}
 \bibliography{sec/ref}
-\cci[Follow a bibliography style]
-\cci[All recent/relevant papers only]
-\cci[20-40 references]
 
 % \bibliographystyle{splncs04}
 % \bibliography{mybibliography}
