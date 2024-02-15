@@ -7,9 +7,9 @@
 
 % uncomment to include stuff in standard comment-environment
 % \includecomment{comment}
-\usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{enumitem}
 \usepackage{underscore} % to allow underscores in the doi
 \usepackage{comment} % for multiline comments
 
@@ -35,7 +35,7 @@
 		% \par\noindent
 		\par\noindent
 		% \break
-		\textcolor{blue}{#1}
+		\cc{#1}
 		\hfill\break
 		% \par
 	}
@@ -44,7 +44,7 @@
 		% \hfill\break
 		\begin{itemize}[nosep]
 			\nointerlineskip
-			\item \textcolor{blue}{#1}
+			\item \cc{#1}
 		\end{itemize}
 	}
 
