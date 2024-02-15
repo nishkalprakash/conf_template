@@ -1,16 +1,17 @@
-\documentclass[runningheads]{llncs}
+\documentclass[runningheads]{lib/llncs}
 
 % This is samplepaper.tex, a sample chapter demonstrating the
 % LLNCS macro package for Springer Computer Science proceedings;
 % Version 2.20 of 2017/10/04
 % \usepackage{verbatim}
 
-\usepackage{comment} % for multiline comments
 % uncomment to include stuff in standard comment-environment
 % \includecomment{comment}
-% \usepackage{enumitem}
+\usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{underscore} % to allow underscores in the doi
+\usepackage{comment} % for multiline comments
 
 % Used for displaying a sample figure. If possible, figure files should
 % be included in EPS format.
@@ -29,27 +30,28 @@
 \includecomment{draft}
 % \excludecomment{draft}
 \begin{draft}
-    \renewcommand\cc[1]{\textcolor{blue}{#1}}
-    \renewcommand\cch[1]{
-        % \par\noindent
-        \par\noindent
-        % \break
-        \textcolor{blue}{#1}
-        \hfill\break
-        % \par
-    }
-    \renewcommand\cci[1]{
-        \par\noindent
-        % \hfill\break
-        \begin{itemize}[nosep]
-        \nointerlineskip
-        \item \textcolor{blue}{#1}
-        \end{itemize}
-    }
+	\renewcommand\cc[1]{\textcolor{blue}{#1}}
+	\renewcommand\cch[1]{
+		% \par\noindent
+		\par\noindent
+		% \break
+		\textcolor{blue}{#1}
+		\hfill\break
+		% \par
+	}
+	\renewcommand\cci[1]{
+		\par\noindent
+		% \hfill\break
+		\begin{itemize}[nosep]
+			\nointerlineskip
+			\item \textcolor{blue}{#1}
+		\end{itemize}
+	}
 
-    \renewcommand\ccut[1]{
-    \cc{\\\framebox[\textwidth]{$\downarrow$ START COMMENT $\downarrow$}}#1\cc{\\\framebox[\textwidth]{$\uparrow$ END COMMENT $\uparrow$}}
-}
+	\renewcommand\ccut[1]{
+		\cc{\\\framebox[\textwidth]{$\downarrow$ START COMMENT $\downarrow$}}#1\cc{\\\framebox[\textwidth]{$\uparrow$ END COMMENT $\uparrow$}}
+	}
+\end{draft}
 
 % % -------------- All packages go above this line --------------
 \begin{document}
